@@ -7,34 +7,34 @@ const bookings = [
     "roomServiceCharges": []
   },
   {
-  "id": "5fwrgu4i7k55hl6ui",
-  "userID": 20,
-  "date": "2022/02/07",
-  "roomNumber": 24,
-  "roomServiceCharges": []
-},
-{
-  "id": "5fwrgu4i7k55hl6yr",
-  "userID": 20,
-  "date": "2022/02/05",
-  "roomNumber": 2,
-  "roomServiceCharges": []
-},
-{
-  "id": "5fwrgu4i7k55hl75n",
-  "userID": 20,
-  "date": "2022/01/18",
-  "roomNumber": 13,
-  "roomServiceCharges": []
-},
-{
-  "id": "5fwrgu4i7k55hl7fv",
-  "userID": 20,
-  "date": "2022/02/16",
-  "roomNumber": 12,
-  "roomServiceCharges": []
-},
-{
+    "id": "5fwrgu4i7k55hl6ui",
+    "userID": 20,
+    "date": "2022/02/07",
+    "roomNumber": 24,
+    "roomServiceCharges": []
+  },
+  {
+    "id": "5fwrgu4i7k55hl6yr",
+    "userID": 20,
+    "date": "2022/02/05",
+    "roomNumber": 2,
+    "roomServiceCharges": []
+  },
+  {
+    "id": "5fwrgu4i7k55hl75n",
+    "userID": 20,
+    "date": "2022/01/18",
+    "roomNumber": 13,
+    "roomServiceCharges": []
+  },
+  {
+    "id": "5fwrgu4i7k55hl7fv",
+    "userID": 20,
+    "date": "2022/02/16",
+    "roomNumber": 12,
+    "roomServiceCharges": []
+  },
+  {
     "id": "5fwrgu4i7k55hl7lm",
     "userID": 33,
     "date": "2022/01/21",
@@ -200,4 +200,4 @@ const customers = [
   },
 ]
 
-export default {bookings, rooms, customers};
+export {  bookings, rooms, customers };
