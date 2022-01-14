@@ -6,7 +6,7 @@ class Customer {
     this.rooms = rooms;
     this.myBookings = [];
     this.bookingsByDate = [];
-    this.roomDetailsByDate = [];
+    this.roomsByDate = [];
   }
 
   getBookings() {
@@ -34,16 +34,27 @@ class Customer {
         this.bookingsByDate.push(booking)
         this.rooms.forEach(room => {
           if(booking.roomNumber === room.number) {
-            this.roomDetailsByDate.push(room)
+            this.roomsByDate.push(room)
           }
         })
       }
     })
-      // booking => {
-      // if(booking.date === date) {
-      //   this.bookingsByDate.push(booking);
-      // }
-    }
+  }
+
+  filterAvailibleRoomsByType(type) {
+    let roomsToReturn = []
+    this.roomsByDate.forEach(roomByDate => {
+      this.rooms.forEach(room => {
+        if(room === roomByDate) {
+          if(room.roomType === type) {
+            roomsToReturn.push(room)
+          }
+        }
+      })
+    })
+    return roomsToReturn
+  }
+
 }
 
 

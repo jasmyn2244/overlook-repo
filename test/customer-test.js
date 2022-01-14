@@ -28,6 +28,7 @@ describe('Customer', () => {
 
   it('Should be able to retrive all its bookings', () => {
     customer20.getBookings();
+
     expect(customer20.myBookings.length).to.equal(5);
     customer22.getBookings();
     expect(customer22.myBookings.length).to.equal(0);
@@ -35,6 +36,7 @@ describe('Customer', () => {
 
   it('Should be able to total the cost of its bookings', () => {
     customer20.getBookings();
+
     expect(customer20.getTotalCostOfBookings()).to.equal(1632.09);
     customer22.getBookings();
     expect(customer22.getTotalCostOfBookings()).to.equal(0);
@@ -42,8 +44,14 @@ describe('Customer', () => {
 
   it('Should be able to filter bookings by date', () => {
     customer20.filterBookingsByDate("2022/02/16");
-    console.log(customer20.bookingsByDate)
+
     expect(customer20.bookingsByDate.length).to.not.equal(0);
-    expect(customer20.roomDetailsByDate[0].number).to.equal(7);
+    expect(customer20.roomsByDate[0].number).to.equal(7);
+  })
+
+  it('Should be able to filter rooms availible on a certain date by room type', () => {
+    customer20.filterBookingsByDate("2022/02/16");
+    expect(customer20.filterAvailibleRoomsByType('single room').length).to.equal(2);
+    expect(customer20.filterAvailibleRoomsByType('suite').length).to.equal(0);
   })
 })
