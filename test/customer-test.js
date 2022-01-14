@@ -21,6 +21,16 @@ describe('Customer', () => {
     expect(customer20).to.be.an.instanceOf(Customer);
   })
 
+  it('Should be able to take in arguments', () => {
+    expect(customer20.bookingsData[0].roomNumber).to.equal(7);
+    expect(customer20.rooms[0].number).to.equal(2);
+  })
 
+  it('Should be able to retrive all its bookings', () => {
+    customer20.getBookings();
+    expect(customer20.myBookings.length).to.equal(5);
+    customer22.getBookings();
+    expect(customer22.myBookings.length).to.equal(0);
+  })
 
 })
