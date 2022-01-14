@@ -6,6 +6,7 @@ class Customer {
     this.rooms = rooms;
     this.myBookings = [];
     this.bookingsByDate = [];
+    this.roomDetailsByDate = [];
   }
 
   getBookings() {
@@ -31,6 +32,11 @@ class Customer {
     this.bookingsData.forEach(booking => {
       if(booking.date === date) {
         this.bookingsByDate.push(booking)
+        this.rooms.forEach(room => {
+          if(booking.roomNumber === room.number) {
+            this.roomDetailsByDate.push(room)
+          }
+        })
       }
     })
       // booking => {

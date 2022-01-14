@@ -44,5 +44,6 @@ describe('Customer', () => {
     customer20.filterBookingsByDate("2022/02/16");
     console.log(customer20.bookingsByDate)
     expect(customer20.bookingsByDate.length).to.not.equal(0);
+    expect(customer20.roomDetailsByDate[0].number).to.equal(7);
   })
 })
