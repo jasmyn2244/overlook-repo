@@ -4,7 +4,8 @@ class Customer {
     this.name = customer.name;
     this.bookingsData = bookings;
     this.rooms = rooms;
-    this.myBookings = []
+    this.myBookings = [];
+    this.bookingsByDate = [];
   }
 
   getBookings() {
@@ -25,6 +26,18 @@ class Customer {
       return acc
     }, 0)
   }
+
+  filterBookingsByDate(date) {
+    this.bookingsData.forEach(booking => {
+      if(booking.date === date) {
+        this.bookingsByDate.push(booking)
+      }
+    })
+      // booking => {
+      // if(booking.date === date) {
+      //   this.bookingsByDate.push(booking);
+      // }
+    }
 }
 
 

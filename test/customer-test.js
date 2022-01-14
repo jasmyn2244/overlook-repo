@@ -40,4 +40,9 @@ describe('Customer', () => {
     expect(customer22.getTotalCostOfBookings()).to.equal(0);
   })
 
+  it('Should be able to filter bookings by date', () => {
+    customer20.filterBookingsByDate("2022/02/16");
+    console.log(customer20.bookingsByDate)
+    expect(customer20.bookingsByDate.length).to.not.equal(0);
+  })
 })
