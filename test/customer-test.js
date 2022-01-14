@@ -33,4 +33,11 @@ describe('Customer', () => {
     expect(customer22.myBookings.length).to.equal(0);
   })
 
+  it('Should be able to total the cost of its bookings', () => {
+    customer20.getBookings();
+    expect(customer20.getTotalCostOfBookings()).to.equal(1632.09);
+    customer22.getBookings();
+    expect(customer22.getTotalCostOfBookings()).to.equal(0);
+  })
+
 })

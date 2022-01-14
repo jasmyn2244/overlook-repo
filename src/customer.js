@@ -15,7 +15,16 @@ class Customer {
     })
   }
 
-
+  getTotalCostOfBookings() {
+    return this.myBookings.reduce((acc, booking) => {
+      this.rooms.forEach(room => {
+        if(booking.roomNumber === room.number) {
+          acc += room.costPerNight;
+        }
+      })
+      return acc
+    }, 0)
+  }
 }
 
 
