@@ -7,8 +7,40 @@
   <title>Webpack Starter Kit</title>
 </head>
 <body>
-  <img src="./images/turing-logo.png" alt="turing logo">
-  
+  <main>
+    <!-- <img url="https://www.wiegele.com/sites/default/files/styles/3000/public/media-images/T608JS3-2118.JPG?itok=-_dX4mca" alt="room"> -->
+    <nav class="nav" id="nav">
+        <h1 class="page-title" id="pageTitle">Home Away From Home</h1>
+        <div class="nav-button-container">
+          <button class="my-bookings-button" id="myBookingsButton">My Bookings</button>
+          <button class="new-booking-button" id="newBookingButton">Make a New Booking</button>
+        </div>
+    </nav>
+    <section class="login-view" id="loginView">
+      <div class=login-container>
+        <h2>Welcome</h2>
+        <form>
+          <input class="username-input" id="usernameInput" type="text" placeholder="Username"></input>
+          <input class="password-input" id="passwordInput" type="text" placeholder="Password"></input>
+        </form>
+        <button class="login-button" id="loginButton" type="submit">Login</button>
+      </div>
+    </section>
+    <section class="dashboard-view hidden">
+    </section>
+    <section class=find-a-room-view>
+      <section class="date-picker-view hidden">
+      </section>
+      <section class= "room-filter-view hidden">
+      </section>
+      <section class>
+      </section>
+    </section>
+
+
+  </main>
+  <!-- <img src="./images/turing-logo.png" alt="turing logo"> -->
+
   <!-- Do not include the scripts.js or class files here - it is done by the webpack server -->
   <script src="bundle.js"></script>
 
