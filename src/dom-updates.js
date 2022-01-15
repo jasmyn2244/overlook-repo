@@ -1,5 +1,5 @@
 let domUpdates = {
-  
+
   hide(elements) {
     forEach(element => {
       element.classList.add('hidden')
