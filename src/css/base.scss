@@ -1,6 +1,90 @@
 /* This is an example of how to import a partial scss file*/
 @import '_variables';
+@import '_mixins.scss';
 
+* {
+  box-sizing: border-box;
+}
 body {
-  background: $primary-background;
+  // background: $primary-background;
+  background-image: url("https://i0.wp.com/www.snowsbest.com/wp-content/uploads/2019/05/last-frontier-heli-skiing.jpg?w=1392&ssl=1");
+  width: 100vw;
+  height: 100vh;
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  position: relative;
+  font-family: sans-serif;
+  margin: 0;
+}
+
+nav {
+  height: 40%;
+  background-color: $dark-blue;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+
+.nav-button-container {
+  @include flexbox(center, center);
+  height: 100%;
+  width: 30%;
+  justify-content: space-around;
+
+  button {
+      height: 60px;
+      background-color: $light-blue;
+      border-radius: 5px;
+      font-size: 100%;
+  }
+}
+
+h1 {
+  font-family: sans-serif;
+  font-size: 200%;
+  color: $light-blue;
+  height: 100%;
+  margin-left: 3%;
+}
+
+.login-view {
+  @include flexbox(center, center);
+  height: 100vh;
+}
+
+.login-container {
+  background-color: rgba(4, 23, 76, .7);
+  height: 50%;
+  width: 30%;
+  border-radius: 5%;
+  @include flexbox(center, center);
+  flex-direction: column;
+  justify-content: space-around;
+
+  h2 {
+    color: $light-blue;
+    font-size: 200%;
+  }
+
+  button {
+    height: 15%;
+    width: 30%;
+    background: $light-blue;
+    border-radius: 5px;
+  }
+}
+
+form {
+  @include flexbox(center, center);
+  flex-direction: column;
+  justify-content: space-between;
+  height: 30%;
+  width: 60%;
+
+  input {
+    height: 30%;
+    width: 100%;
+    background: $light-blue;
+  }
 }
