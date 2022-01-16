@@ -5,20 +5,26 @@ class Customer {
     this.bookingsData = bookings;
     this.rooms = rooms;
     this.myBookings = [];
-    this.bookingsByDate = [];
     this.roomsByDate = [];
+    this.roomsByType = [];
+    this.totalCostOfBookings = 0;
   }
 
   getBookings() {
+    this.myBookings = [];
     this.bookingsData.forEach(booking => {
       if(booking.userID === this.id) {
-        this.myBookings.push(booking);
-      };
+        this.rooms.forEach(room => {
+          if(booking.roomNumber === room.number) {
+            this.myBookings.push({'date': booking.date, 'roomNumber': booking.roomNumber, 'roomType': room.roomType, 'bedSize': room.bedSize, 'numBeds': room.numBeds, 'costPerNight': room.costPerNight});
+          }
+        })
+      }
     })
   }
 
   getTotalCostOfBookings() {
-    return this.myBookings.reduce((acc, booking) => {
+    this.totalCostOfBookings = this.myBookings.reduce((acc, booking) => {
       this.rooms.forEach(room => {
         if(booking.roomNumber === room.number) {
           acc += room.costPerNight;
@@ -28,34 +34,35 @@ class Customer {
     }, 0)
   }
 
-  filterBookingsByDate(date) {
-    this.bookingsData.forEach(booking => {
-      if(booking.date === date) {
-        this.bookingsByDate.push(booking)
-        this.rooms.forEach(room => {
-          if(booking.roomNumber === room.number) {
-            this.roomsByDate.push(room)
+  filterRoomsByDate(date) {
+    this.roomsByDate = [];
+    let unavailableRooms = []
+    this.rooms.forEach(room => {
+      this.bookingsData.forEach(booking => {
+        if(booking.roomNumber === room.number) {
+          if(booking.date === date) {
+            unavailableRooms.push(room);
           }
-        })
+        }
+      })
+    })
+    this.rooms.forEach(room => {
+      if(!unavailableRooms.includes(room))  {
+        this.roomsByDate.push(room);
       }
     })
   }
 
   filterAvailibleRoomsByType(type) {
-    let roomsToReturn = []
+    this.roomsByType = [];
     this.roomsByDate.forEach(roomByDate => {
-      this.rooms.forEach(room => {
-        if(room === roomByDate) {
-          if(room.roomType === type) {
-            roomsToReturn.push(room)
-          }
-        }
-      })
+      if(roomByDate.roomType === type) {
+        this.roomsByType.push(roomByDate);
+      }
     })
-    return roomsToReturn
   }
 
 }
 
 
-export default Customer
+export default Customer;

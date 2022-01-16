@@ -17,7 +17,7 @@ describe('Customer', () => {
     expect(Customer).to.be.a('function');
   })
 
-  it('Should instatiat a new instanct of Customer', () => {
+  it('Should instatiate a new instanct of Customer', () => {
     expect(customer20).to.be.an.instanceOf(Customer);
   })
 
@@ -42,16 +42,18 @@ describe('Customer', () => {
     expect(customer22.getTotalCostOfBookings()).to.equal(0);
   })
 
-  it('Should be able to filter bookings by date', () => {
-    customer20.filterBookingsByDate("2022/02/16");
-
-    expect(customer20.bookingsByDate.length).to.not.equal(0);
-    expect(customer20.roomsByDate[0].number).to.equal(7);
+  it('Should be able to filter availible rooms by date', () => {
+    customer20.filterRoomsByDate("2022/02/16");
+    expect(customer20.roomsByDate.length).to.equal(9);
   })
 
   it('Should be able to filter rooms availible on a certain date by room type', () => {
-    customer20.filterBookingsByDate("2022/02/16");
-    expect(customer20.filterAvailibleRoomsByType('single room').length).to.equal(2);
-    expect(customer20.filterAvailibleRoomsByType('suite').length).to.equal(0);
+    customer20.filterRoomsByDate("2022/02/16");
+    customer20.filterAvailibleRoomsByType('single room');
+    expect(customer20.roomsByType.length).to.equal(3);
+
+    customer20.filterAvailibleRoomsByType('suite')
+    expect(customer20.roomsByType.length).to.equal(2);
   })
+  
 })
