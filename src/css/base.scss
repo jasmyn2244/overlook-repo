@@ -123,6 +123,13 @@ form {
 
 }
 
+.my-bookings-wrapper{
+  @include flexbox(center, center);
+  flex-direction: column;
+  width:100%;
+  overflow-y: auto;
+}
+
 .individaul-booking {
   @include flexbox(center, center);
   justify-content: space-between;
@@ -131,6 +138,7 @@ form {
   height: 20%;
   background-color: $light-blue;
   border: 2px solid yellow;
+  margin: 2%;
 
   img {
     height: 100%;

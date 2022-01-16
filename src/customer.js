@@ -7,6 +7,7 @@ class Customer {
     this.myBookings = [];
     this.roomsByDate = [];
     this.roomsByType = [];
+    this.totalCostOfBookings = 0;
   }
 
   getBookings() {
@@ -23,7 +24,7 @@ class Customer {
   }
 
   getTotalCostOfBookings() {
-    return this.myBookings.reduce((acc, booking) => {
+    this.totalCostOfBookings = this.myBookings.reduce((acc, booking) => {
       this.rooms.forEach(room => {
         if(booking.roomNumber === room.number) {
           acc += room.costPerNight;
@@ -60,7 +61,7 @@ class Customer {
       }
     })
   }
-  
+
 }
 
 

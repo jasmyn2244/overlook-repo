@@ -17,6 +17,10 @@ const usernameInput = document.querySelector('#usernameInput');
 const passwordInput = document.querySelector('#passwordInput');
 const loginButton = document.querySelector('#loginButton');
 const myBookingsView = document.querySelector('#myBookingsView');
+const myBookingsContainer = document.querySelector('#myBookingsContainer');
+const myBookingsWrapper = document.querySelector('#myBookingsWrapper');
+const myBookingsHeading = document.querySelector('#myBookingsHeading');
+const totalCost = document.querySelector('#totalCost');
 
 
 
@@ -57,12 +61,15 @@ const authenticateCustomer = () => {
 const displayMyBookings = () => {
   domUpdates.hide([loginView]);
   domUpdates.show([myBookingsView]);
-  // customer.getBookings();
-  // customer.myBookings.forEach(booking => {
-  //   myBookingsView.innerHTML = `
-  //   `
-  //})
-}
+  customer.getBookings();
+  customer.getTotalCostOfBookings();
+  if(customer.myBookings.length === 0) {
+    //domUpdates.showNoBookingsMessage();
+  } else {
+    domUpdates.showMyBookings(customer);
+
+    }
+  }
 
 
 
@@ -71,3 +78,5 @@ const displayMyBookings = () => {
 //EVENT LISTENERS
 window.addEventListener('load', fetchData);
 loginButton.addEventListener('click', authenticateCustomer);
+
+export { customer };
