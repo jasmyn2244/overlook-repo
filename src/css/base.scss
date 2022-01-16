@@ -54,7 +54,7 @@ h1 {
 }
 
 .login-container {
-  background-color: rgba(4, 23, 76, .7);
+  background-color: $transparent-blue;
   height: 50%;
   width: 30%;
   border-radius: 5%;
@@ -87,4 +87,11 @@ form {
     width: 100%;
     background: $light-blue;
   }
+}
+
+.my-bookings-view {
+  background-color: $transparent-blue;
+  height: 80%;
+  width:80%;
+
 }

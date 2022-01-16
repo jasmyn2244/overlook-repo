@@ -5,15 +5,20 @@ class Customer {
     this.bookingsData = bookings;
     this.rooms = rooms;
     this.myBookings = [];
-    this.bookingsByDate = [];
     this.roomsByDate = [];
+    this.bookingsFilteredByType = []
   }
 
   getBookings() {
+    this.myBookings = [];
     this.bookingsData.forEach(booking => {
       if(booking.userID === this.id) {
-        this.myBookings.push(booking);
-      };
+        this.rooms.forEach(room => {
+          if(booking.roomNumber === room.number) {
+            this.myBookings.push({'date': booking.date, 'roomNumber': booking.roomNumber, 'roomType': room.roomType, 'bedSize': room.bedSize, 'numBeds': room.numBeds, 'costPerNight': room.costPerNight});
+          }
+        })
+      }
     })
   }
 
@@ -28,33 +33,39 @@ class Customer {
     }, 0)
   }
 
-  filterBookingsByDate(date) {
-    this.bookingsData.forEach(booking => {
-      if(booking.date === date) {
-        this.bookingsByDate.push(booking)
-        this.rooms.forEach(room => {
-          if(booking.roomNumber === room.number) {
-            this.roomsByDate.push(room)
-          }
-        })
-      }
-    })
-  }
-
-  filterAvailibleRoomsByType(type) {
-    let roomsToReturn = []
-    this.roomsByDate.forEach(roomByDate => {
-      this.rooms.forEach(room => {
-        if(room === roomByDate) {
-          if(room.roomType === type) {
-            roomsToReturn.push(room)
+  filterRoomsByDate(date) {
+    //this.roomsByDate = [];
+    let unavailableRooms = []
+    this.rooms.forEach(room => {
+      this.bookingsData.forEach(booking => {
+        if(booking.roomNumber === room.number) {
+          if(booking.date === date) {
+            unavailableRooms.push(room);
           }
         }
       })
     })
-    return roomsToReturn
+    this.rooms.forEach(room => {
+      if(!unavailableRooms.includes(room))  {
+        this.roomsByDate.push(room);
+      }
+    })
+    console.log(unavailableRooms);
+    console.log(this.roomsByDate);
   }
 
+  filterAvailibleBookingsByType(type) {
+    this.bookingsFilteredByType = [];
+    this.bookingsByDate.forEach(bookingByDate => {
+      this.rooms.forEach(room => {
+        if(room.number === bookingByDate.roomNumber) {
+          if(room.roomType === type) {
+            this.bookingsFilteredByType.push({'date': bookingByDate.date, 'roomNumber': bookingByDate.roomNumber, 'roomType': room.roomType, 'bedSize': room.bedSize, 'numBeds': room.numBeds, 'costPerNight': room.costPerNight})
+          }
+        }
+      })
+    })
+  }
 }
 
 

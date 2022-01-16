@@ -15,6 +15,7 @@ import Customer from './customer'
 const usernameInput = document.querySelector('#usernameInput');
 const passwordInput = document.querySelector('#passwordInput');
 const loginButton = document.querySelector('#loginButton');
+const myBookingsView = document.querySelector('#myBookingsView');
 
 
 
@@ -53,8 +54,14 @@ const authenticateCustomer = () => {
   }
 
 const displayMyBookings = () => {
+  customer.getBookings();
+  customer.myBookings.forEach(booking => {
+    myBookingsView.innerHTML = `
+    `
+  })
 
-}
+
+
 
 
 //EVENT LISTENERS
