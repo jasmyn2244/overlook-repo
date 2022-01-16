@@ -3,8 +3,9 @@
 
 // An example of how you tell webpack to use a CSS (SCSS) file
 import './css/base.scss';
-import { fetchCustomer, fetchBookings, fetchRooms } from './api-calls'
-import Customer from './customer'
+import { fetchCustomer, fetchBookings, fetchRooms } from './api-calls';
+import Customer from './customer';
+import domUpdates from './dom-updates';
 
 // An example of how you tell webpack to use an image (also need to link to it in the index.html)
 //import './images/turing-logo.png'
@@ -47,18 +48,21 @@ const authenticateCustomer = () => {
     Promise.all([fetchCustomer(customerID)])
       .then(data => {
         customer = (new Customer(data[0], bookings, rooms))
-        //displayMyBookings()
+        displayMyBookings()
         console.log(customer)
       })
     }
   }
 
 const displayMyBookings = () => {
-  customer.getBookings();
-  customer.myBookings.forEach(booking => {
-    myBookingsView.innerHTML = `
-    `
-  })
+  domUpdates.hide([loginView]);
+  domUpdates.show([myBookingsView]);
+  // customer.getBookings();
+  // customer.myBookings.forEach(booking => {
+  //   myBookingsView.innerHTML = `
+  //   `
+  //})
+}
 
 
 
