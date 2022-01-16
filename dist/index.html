@@ -10,14 +10,16 @@
   <main>
     <!-- <img url="https://www.wiegele.com/sites/default/files/styles/3000/public/media-images/T608JS3-2118.JPG?itok=-_dX4mca" alt="room"> -->
     <nav class="nav" id="nav">
-        <h1 class="page-title" id="pageTitle">Home Away From Home</h1>
+        <div class="home-away">
+          <h1 class="page-title" id="pageTitle">Home Away From Home</h1>
+        </div>
         <div class="nav-button-container">
           <button class="my-bookings-button" id="myBookingsButton">My Bookings</button>
           <button class="new-booking-button" id="newBookingButton">Make a New Booking</button>
         </div>
     </nav>
     <section class="login-view hidden" id="loginView">
-      <div class=login-container>
+      <div class="login-container">
         <h2>Welcome</h2>
         <form>
           <input class="username-input" id="usernameInput" type="text" placeholder="Username" required></input>
@@ -27,19 +29,39 @@
       </div>
     </section>
     <section class="my-bookings-view" id="myBookingsView">
-      <section class="individaul-booking" id="individualBooking">
-        <div>
-          <img url="https://www.mountainliving.com/content/uploads/data-import/9882388e/YC---River-Runs-Through-It---High-Resolution---Image-9.jpg" alt="luxry-cabin-room">
-        </div>
-        <div>
-          <p>Date</p>
-          <p>Room Type</p>
-          <p>Bed Size</p>
-          <p>Number of Beds</p>
-        </div>
-        <div>
-          <p>Cost</p>
-        </div>
+      <section class="my-bookings-container" id="myBookingsContainer">
+        <h2>Jasmyn's Bookings</h2>
+        <section class="individaul-booking" id="individualBooking">
+            <img src="https://www.mountainliving.com/content/uploads/data-import/9882388e/YC---River-Runs-Through-It---High-Resolution---Image-9.jpg" alt="luxry-cabin-room">
+          <div class="room-details">
+            <p>Date</p>
+            <p>Room Type</p>
+            <p>Bed Size</p>
+            <p>Number of Beds</p>
+          </div>
+          <p class="cost">Cost</p>
+        </section>
+        <section class="individaul-booking" id="individualBooking">
+            <img src="https://www.mountainliving.com/content/uploads/data-import/9882388e/YC---River-Runs-Through-It---High-Resolution---Image-9.jpg" alt="luxry-cabin-room">
+          <div class="room-details">
+            <p>Date</p>
+            <p>Room Type</p>
+            <p>Bed Size</p>
+            <p>Number of Beds</p>
+          </div>
+          <p class="cost">Cost</p>
+        </section>
+        <section class="individaul-booking" id="individualBooking">
+            <img src="https://www.mountainliving.com/content/uploads/data-import/9882388e/YC---River-Runs-Through-It---High-Resolution---Image-9.jpg" alt="luxry-cabin-room">
+          <div class="room-details">
+            <p>Date</p>
+            <p>Room Type</p>
+            <p>Bed Size</p>
+            <p>Number of Beds</p>
+          </div>
+          <p class="cost">Cost</p>
+        </section>
+        <h3>Total cost</h3>
       </section>
     </section>
     <section class=find-a-room-view>
