@@ -6,7 +6,7 @@ class Customer {
     this.rooms = rooms;
     this.myBookings = [];
     this.roomsByDate = [];
-    this.bookingsFilteredByType = []
+    this.roomsByType = [];
   }
 
   getBookings() {
@@ -34,7 +34,7 @@ class Customer {
   }
 
   filterRoomsByDate(date) {
-    //this.roomsByDate = [];
+    this.roomsByDate = [];
     let unavailableRooms = []
     this.rooms.forEach(room => {
       this.bookingsData.forEach(booking => {
@@ -50,20 +50,14 @@ class Customer {
         this.roomsByDate.push(room);
       }
     })
-    console.log(unavailableRooms);
-    console.log(this.roomsByDate);
   }
 
-  filterAvailibleBookingsByType(type) {
-    this.bookingsFilteredByType = [];
-    this.bookingsByDate.forEach(bookingByDate => {
-      this.rooms.forEach(room => {
-        if(room.number === bookingByDate.roomNumber) {
-          if(room.roomType === type) {
-            this.bookingsFilteredByType.push({'date': bookingByDate.date, 'roomNumber': bookingByDate.roomNumber, 'roomType': room.roomType, 'bedSize': room.bedSize, 'numBeds': room.numBeds, 'costPerNight': room.costPerNight})
-          }
-        }
-      })
+  filterAvailibleRoomsByType(type) {
+    this.roomsByType = [];
+    this.roomsByDate.forEach(roomByDate => {
+      if(roomByDate.roomType === type) {
+        this.roomsByType.push(roomByDate);
+      }
     })
   }
 }

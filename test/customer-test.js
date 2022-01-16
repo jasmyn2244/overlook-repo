@@ -48,10 +48,12 @@ describe('Customer', () => {
   })
 
   it('Should be able to filter rooms availible on a certain date by room type', () => {
-    customer20.filterBookingsByDate("2022/02/16");
-    customer20.filterAvailibleBookingsByType('single room');
-    expect(customer20.bookingsFilteredByType.length).to.equal(2);
-    customer20.filterAvailibleBookingsByType('suite')
-    expect(customer20.bookingsFilteredByType.length).to.equal(0);
+    customer20.filterRoomsByDate("2022/02/16");
+    customer20.filterAvailibleRoomsByType('single room');
+    expect(customer20.roomsByType.length).to.equal(3);
+
+    customer20.filterAvailibleRoomsByType('suite')
+    expect(customer20.roomsByType.length).to.equal(2);
   })
+  
 })
