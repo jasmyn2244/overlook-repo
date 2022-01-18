@@ -3,10 +3,10 @@
 ## Table of Contents
   - [Description](#description)
   - [Technologies](#technologies)
-  - [Installation](#installation)
+  - [Installation and Setup](#installation-and-setup)
   - [Wins](#wins)
   - [Challenges and Future Iterations](#challenges-and-future-iterations)
-   [Contributors](#contributors)
+  - [Contributors](#contributors)
   - [Project Specs](#project-specs)
 
 
