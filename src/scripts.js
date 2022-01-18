@@ -58,8 +58,18 @@ export const fetchData = () => {
 
 const authenticateCustomer = (event) => {
   event.preventDefault();
-  // handleEmptyField(usernameInput);
-  // handleEmptyField(passwordInput);
+  if(!usernameInput.value) {
+    domUpdates.showRequiredFieldMessage(usernameInput);
+    return
+  } else {
+    domUpdates.hideRequiredFieldMessage(usernameInput)
+  }
+  if(!passwordInput.value) {
+    domUpdates.showRequiredFieldMessage(passwordInput);
+    return;
+  } else {
+    domUpdates.hideRequiredFieldMessage(passwordInput)
+  }
   if(passwordInput.value === 'overlook2021') {
     const customerID = usernameInput.value.replace( /^\D+/g, '');
     Promise.all([fetchCustomer(customerID)])
@@ -89,7 +99,6 @@ const displayFilteredRooms = (event) => {
   event.preventDefault();
   inputDate = date.value.replace(/-/g, '/');
   let inputType = document.querySelector('input[name="roomType"]:checked');
-  // let inputType = document.querySelector('input[name="roomType"]:checked');
   if(!inputDate) {
     domUpdates.showRequiredFieldMessage(date);
     return;
@@ -102,13 +111,6 @@ const displayFilteredRooms = (event) => {
   } else {
     domUpdates.hideRequiredFieldMessage(roomTypeSection)
   }
-  // handleEmptyField(date.value, date);
-  // if(!inputType) {
-  //   domUpdates.showRequiredFieldMessage(roomTypeSection);
-  //   return
-  // } else {
-  //   domUpdates.hideRequiredFieldMessage(roomTypeSection)
-  // }
   filteredRoomsContainer.classList.remove('invisible')
   customer.filterRoomsByDate(inputDate);
   customer.filterAvailibleRoomsByType(inputType.value);
@@ -141,7 +143,7 @@ export const showErrorMessage = () => {
 // const handleEmptyField = (input, element) => {
 //   if(!input) {
 //   domUpdates.showRequiredFieldMessage(element)
-//   return
+//   return return;
 //   } else {
 //   domUpdates.hideRequiredFieldMessage(element)
 //   }

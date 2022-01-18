@@ -211,16 +211,8 @@ h1 {
   overflow-y: auto;
   background-color: $transparent-blue;
   align-items: center;
+  color: $light-blue;
 }
-
-// .my-bookings-wrapper {
-//   display: flex;
-//   margin: auto;
-//   flex-direction: column;
-//   align-items: center;
-//   width: 95%;
-//   overflow-y: auto;
-// }
 
 .individual-room {
   @include flexbox(center, center);
