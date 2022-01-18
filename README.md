@@ -5,7 +5,7 @@
   - [Technologies](#technologies)
   - [Install + Setup](#set-up)
   - [Wins](#wins)
-  - [Challenges + Future Iterations](#challenges-+-future)
+  - [Challenges + Future Iterations](#challenges)
   - [Contributors](#contributors)
   - [Project Specs](#project-specs)
 
