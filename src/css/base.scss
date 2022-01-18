@@ -202,14 +202,25 @@ h1 {
 }
 
 .filtered-rooms-container {
- @include container();
- width: 60%;
- overflow-y: scroll;
- color: $light-blue;
- margin: auto;
- align-items: center;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  height:80%;
+  width: 60%;
+  border-radius: 5%;
+  overflow-y: auto;
+  background-color: $transparent-blue;
+  align-items: center;
 }
 
+// .my-bookings-wrapper {
+//   display: flex;
+//   margin: auto;
+//   flex-direction: column;
+//   align-items: center;
+//   width: 95%;
+//   overflow-y: auto;
+// }
 
 .individual-room {
   @include flexbox(center, center);
