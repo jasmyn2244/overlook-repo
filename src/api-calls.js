@@ -16,6 +16,7 @@ const fetchRooms = () => {
 }
 
 const postBooking = (selectedRoom, customer, date) => {
+  console.log('in api calls, selected room', selectedRoom)
   return fetch('http://localhost:3001/api/v1/bookings', {
     method: 'POST',
     headers: {
@@ -30,7 +31,7 @@ const postBooking = (selectedRoom, customer, date) => {
     } else if (!response.ok) {
       showErrorMessage()
     }
-    // console.log('post response', response)
+    console.log('post response', response)
 
   })
   .catch(err => showErrorMessage())

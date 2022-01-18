@@ -18,7 +18,7 @@
           <button class="new-booking-button" id="newBookingButton">Make a New Booking</button>
         </div>
     </nav>
-    <section class="login-view hidden" id="loginView">
+    <section class="login-view" id="loginView">
       <div class="login-container">
         <h2>Welcome</h2>
         <form class="login-form">
@@ -46,7 +46,7 @@
             <h2>Select A Date</h2>
             <input type="date" id="date" required>
           </div>
-          <div class="room-type-section">
+          <div class="room-type-section" id="roomTypeSection">
             <h2>Select Room Type</h2>
             <div>
               <input type="radio" id="residentialSuite" name="roomType" value="residential suite">
@@ -71,7 +71,7 @@
       <section class="filtered-rooms-container invisible" id='filteredRoomsContainer'>
       </section>
     </section>
-    <section class="booking-success-view" id="bookingSuccessView">
+    <section class="booking-success-view hidden" id="bookingSuccessView">
       <section class="booking-success-container" id="bookingSuccessContainer">
         <section class="success-message-wrapper" id="successMessageWrapper">
           <h2>You're Going on Vacation!</h2>
@@ -84,15 +84,18 @@
             </div>
             <p class="filtered-cost">$${room.costPerNight}</p>
           </section>
+            <h3>This room has been added to your bookings</h3>
         </section>
-        <h3>This room has been added to your bookings</h3>
-        <div>
+        <div class="success-buttons-container">
+          <button id="makeAnotherBookingButton">Make Another Booking</button>
+          <button id="viewMyBookingsButton">View My Bookings</button>
         </div>
       </section>
     </section>
-    <section class="booking-fail-view hidden">
+    <section class="booking-error-view hidden" id="bookingErrorView">
       <section class="booking-fail-container">
-        <h2>Looks like something went wrong. Please try again.</h2>
+        <h2>Looks like something went wrong</h2>
+        <h2>Please try again</h2>
         <h3>Thank you for your patience</h3>
       </section>
     </section>
