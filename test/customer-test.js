@@ -17,8 +17,15 @@ describe('Customer', () => {
     expect(Customer).to.be.a('function');
   })
 
-  it('Should instatiate a new instanct of Customer', () => {
+  it('Should instatiate a new instance of Customer', () => {
     expect(customer20).to.be.an.instanceOf(Customer);
+  })
+
+  it('Should have default parameters for its properies', () => {
+    expect(customer20.myBookings).to.be.an('array');
+    expect(customer20.roomsByDate).to.be.an('array');
+    expect(customer20.roomsByType).to.be.an('array');
+    expect(customer20.totalCostOfBookings).to.equal(0);
   })
 
   it('Should be able to take in arguments', () => {
@@ -36,10 +43,12 @@ describe('Customer', () => {
 
   it('Should be able to total the cost of its bookings', () => {
     customer20.getBookings();
+    customer20.getTotalCostOfBookings();
 
-    expect(customer20.getTotalCostOfBookings()).to.equal(1632.09);
+    expect(customer20.totalCostOfBookings).to.equal(1632.09);
     customer22.getBookings();
-    expect(customer22.getTotalCostOfBookings()).to.equal(0);
+    customer22.getTotalCostOfBookings();
+    expect(customer22.totalCostOfBookings).to.equal(0);
   })
 
   it('Should be able to filter availible rooms by date', () => {
@@ -55,5 +64,5 @@ describe('Customer', () => {
     customer20.filterAvailibleRoomsByType('suite')
     expect(customer20.roomsByType.length).to.equal(2);
   })
-  
+
 })
