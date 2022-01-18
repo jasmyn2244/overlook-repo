@@ -3,7 +3,7 @@
 ## Table of Contents
   - [Description](#description)
   - [Technologies](#technologies)
-  - [Install + Setup](#set-up)
+  - [Install + Setup](#setup)
   - [Wins](#wins)
   - [Challenges + Future Iterations](#challenges)
   - [Contributors](#contributors)
@@ -84,3 +84,6 @@ This app allows users to search hotel rooms and make bookings. Users can filter 
 
 ## Contributors
 [Jasmyn Hicks](https://github.com/jasmyn2244)
+
+## Project specs
+* The ruberic and specs for this project can be found [here](https://frontend.turing.edu/projects/overlook.html)
