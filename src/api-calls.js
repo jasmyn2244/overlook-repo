@@ -31,10 +31,11 @@ const postBooking = (selectedRoom, customer, date) => {
     } else if (!response.ok) {
       showErrorMessage()
     }
-    console.log('post response', response)
-
   })
-  .catch(err => showErrorMessage())
+  .catch(err => {
+    console.log(err)
+    showErrorMessage()
+  })
 }
 
 

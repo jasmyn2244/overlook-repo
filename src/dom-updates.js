@@ -1,6 +1,4 @@
 import { customer } from './scripts'
-// import { postBooking } from './api-calls'
-//import Customer from './customer';
 let imageSource;
 
 let domUpdates = {
@@ -38,7 +36,8 @@ let domUpdates = {
           <p>Room Number: ${booking.roomNumber}</p>
         </div>
         <p class="cost">${booking.costPerNight.toFixed(2)}</p>
-      </section>    `
+      </section>
+      `
     })
   },
 

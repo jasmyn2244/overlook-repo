@@ -66,6 +66,19 @@ export const fetchData = () => {
 
 const authenticateCustomer = (event) => {
   event.preventDefault();
+  console.log(usernameInput.value)
+  if(!usernameInput.value){
+    domUpdates.showRequiredFieldMessage(usernameInput)
+    return
+  } else {
+    domUpdates.hideRequiredFieldMessage(usernameInput)
+  }
+  if(!passwordInput.value) {
+    domUpdates.showRequiredFieldMessage(passwordInput)
+    return
+  } else {
+    domUpdates.hideRequiredFieldMessage(passwordInput)
+  }
   if(passwordInput.value === 'overlook2021') {
     const customerID = usernameInput.value.replace( /^\D+/g, '');
     Promise.all([fetchCustomer(customerID)])
