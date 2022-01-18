@@ -1,7 +1,7 @@
 import { customer } from './scripts'
 // import { postBooking } from './api-calls'
 //import Customer from './customer';
-
+let imageSource;
 
 let domUpdates = {
 
@@ -26,9 +26,10 @@ let domUpdates = {
     totalCost.innerText = `Total Cost: $${customer.totalCostOfBookings.toFixed(2)}`
     myBookingsWrapper.innerHTML = ''
     customer.myBookings.forEach(booking => {
+      this.determineImage(booking.roomType);
       myBookingsWrapper.innerHTML += `
       <section class="individaul-booking">
-          <img src="https://www.mountainliving.com/content/uploads/data-import/9882388e/YC---River-Runs-Through-It---High-Resolution---Image-9.jpg" alt="luxry-cabin-room">
+          <img src=${imageSource}>
         <div class="room-details">
           <p>${booking.date}</p>
           <p>Room Type: ${booking.roomType}</p>
@@ -48,9 +49,10 @@ let domUpdates = {
         `<h2>We are so terribly sorry but there are no rooms of the type you are looking for on this date. Please forgive us try searching for a different room type or a different date. Again, we are sooooooooo sorry! Please don't give up on us.</h2>`
     }
     customer.roomsByType.forEach(room => {
+      this.determineImage(room.roomType);
       filteredRoomsContainer.innerHTML += `
       <section class="individual-room">
-          <img src="https://www.mountainliving.com/content/uploads/data-import/9882388e/YC---River-Runs-Through-It---High-Resolution---Image-9.jpg" alt="luxry-cabin-room">
+          <img src=${imageSource} alt="luxry-cabin-room">
         <div class="filtered-room-details">
           <p>Room Type: ${room.roomType}</p>
           <p>Bed Type: ${room.bedSize}</p>
@@ -65,10 +67,11 @@ let domUpdates = {
   },
 
   showBookedRoom(customer, room) {
+    this.determineImage(room.roomType);
     successMessageWrapper.innerHTML = `
     <h2>You're Going on Vacation, ${customer.name}!</h2>
     <section class="booked-room">
-        <img src="https://www.mountainliving.com/content/uploads/data-import/9882388e/YC---River-Runs-Through-It---High-Resolution---Image-9.jpg" alt="luxry-cabin-room">
+        <img src=${imageSource} alt="luxry-cabin-room">
       <div class="filtered-room-details">
         <p>Room Type: ${room.roomType}</p>
         <p>Bed Type: ${room.bedSize}</p>
@@ -86,6 +89,21 @@ let domUpdates = {
 
   hideRequiredFieldMessage(element) {
     element.classList.remove('error-border');
+  },
+
+  determineImage(roomType) {
+    if(roomType === 'residential suite') {
+    imageSource = 'https://img.bookonthebrightside.com/smokymountain/large/66259.jpg'
+    }
+    if(roomType === 'suite') {
+    imageSource = 'https://www.mountainliving.com/content/uploads/data-import/9882388e/YC---River-Runs-Through-It---High-Resolution---Image-9.jpg'
+    }
+    if(roomType === 'junior suite') {
+    imageSource = 'https://loveincorporated.blob.core.windows.net/contentimages/gallery/53b2ae1d-241f-4ce1-a3b1-4288ae893b77-sun-peaks-canada-bedroom.jpg'
+    }
+    if(roomType === 'single room') {
+    imageSource = 'https://www.gtlc.com/media/2060/colter-bay-cabin-two-bedroom-one-double-two-twins.jpg'
+    }
   }
 }
 
