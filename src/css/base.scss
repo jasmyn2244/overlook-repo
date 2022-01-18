@@ -5,14 +5,18 @@
 * {
   box-sizing: border-box;
 }
+
+html{
+  height: 100%;
+}
+
 body {
   // background: $primary-background;
   background-image: url("https://i0.wp.com/www.snowsbest.com/wp-content/uploads/2019/05/last-frontier-heli-skiing.jpg?w=1392&ssl=1");
-  width: 100vw;
-  height: 100vh;
+  width: 100%;
+  height: 100%;
   background-size: 100% 100%;
   background-repeat: no-repeat;
-  position: relative;
   font-family: sans-serif;
   margin: 0;
 }
@@ -21,8 +25,12 @@ main {
   height: 91%;
 }
 
+button {
+  cursor: pointer;
+}
+
 nav {
-  height: 10%;
+  height: 12%;
   background-color: $dark-blue;
   @include flexbox(center, center);
   // display: flex;
@@ -78,42 +86,34 @@ h1 {
   }
 
   button {
-    height: 15%;
-    width: 30%;
+    height: 20%;
+    width: 100%;
     background: $light-blue;
     border-radius: 5px;
   }
 }
 
-form {
+.login-form {
   @include flexbox(center, center);
   flex-direction: column;
   justify-content: space-between;
-  height: 30%;
+  height: 80%;
   width: 60%;
+  margin-bottom: 15%;
 
   input {
-    height: 30%;
+    height: 20%;
     width: 100%;
     background: $light-blue;
   }
 }
 
 .my-bookings-view {
-  height: 100%;
-  width:100%;
-  @include flexbox(center,center);
+  @include mainView();
 }
 
 .my-bookings-container {
-  background-color: $transparent-blue;
-  @include flexbox(center, center);
-  flex-direction: column;
-  justify-content: space-between;
-  height:80%;
-  width: 60%;
-  border: 2px solid green;
-  border-radius: 5%;
+  @include container();
 
 
   h2,
@@ -123,22 +123,21 @@ form {
 
 }
 
-.my-bookings-wrapper{
+.my-bookings-wrapper {
   @include flexbox(center, center);
   flex-direction: column;
-  width:100%;
+  width: 95%;
   overflow-y: auto;
 }
 
 .individaul-booking {
   @include flexbox(center, center);
   justify-content: space-between;
-  //margin: 5%;
-  width: 80%;
+  width: 90%;
   height: 20%;
   background-color: $light-blue;
-  border: 2px solid yellow;
   margin: 2%;
+  border-radius: 3px;
 
   img {
     height: 100%;
@@ -148,6 +147,7 @@ form {
 .room-details {
   display: flex;
   flex-direction: column;
+  width: 30%;
 
   p {
     margin: 0;
@@ -156,6 +156,126 @@ form {
 
 .cost {
   margin-right: 10%;
+}
+
+.book-a-room-view {
+ @include mainView();
+ justify-content: space-around;
+}
+
+.book-a-room-container {
+  @include container();
+  width: 25%;
+}
+
+.filter-form {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  height: 100%;
+  width: 60%;
+  color:$light-blue;
+}
+
+.room-type-section {
+  display: flex;
+  flex-direction: column;
+}
+
+.view-filtered-rooms-button {
+  height: 10%;
+  width: 100%;
+  background-color: $light-blue;
+}
+
+.filtered-rooms-container {
+ @include container();
+ width: 60%;
+ overflow-y: auto;
+}
+
+.individual-room {
+  @include flexbox(center, center);
+  justify-content: space-between;
+  width: 80%;
+  height: 20%;
+  background-color: $light-blue;
+  margin: 2%;
+  border-radius: 3px;
+  font-size: 85%;
+
+  img {
+    height: 100%;
+  }
+
+  button {
+    margin-right: 3%;
+    height: 80%;
+    background-color: $dark-blue;
+    color: #ead69a;
+    border-radius: 8px;
+  }
+}
+
+.filtered-room-details {
+  display: flex;
+  flex-direction: column;
+  width: 30%;
+
+  p {
+    margin: 0;
+  }
+}
+
+.cost {
+  margin-right: 10%;
+}
+
+.booking-success-view {
+  @include mainView;
+  border: 2px solid red;
+}
+
+.booking-success-container {
+  @include container;
+  justify-content: space-around;
+  border: 2px solid yellow;
+
+  h2,
+  h3 {
+    color: $light-blue
+  }
+}
+
+.success-message-wrapper {
+  border: 2px solid blue;
+  @include flexbox(center, center);
+  flex-direction: column;
+  width: 95%;
+  height: 30%;
+  border: 2px dashed yellow;
+}
+
+.booked-room {
+  @include flexbox(center, center);
+  justify-content: space-between;
+  width: 80%;
+  height: 60%;
+  background-color: $light-blue;
+  margin: 2%;
+  border-radius: 3px;
+  font-size: 85%;
+  border: 2px solid green;
+
+  img {
+    height: 100%;
+  }
+
+}
+
+
+.invisible {
+  visibility: hidden;
 }
 
 .hidden {
