@@ -13,48 +13,87 @@
         <div class="home-away">
           <h1 class="page-title" id="pageTitle">Home Away From Home</h1>
         </div>
-        <div class="nav-button-container">
+        <div class="nav-button-container hidden" id="navButtonContainer">
           <button class="my-bookings-button" id="myBookingsButton">My Bookings</button>
           <button class="new-booking-button" id="newBookingButton">Make a New Booking</button>
         </div>
     </nav>
-    <section class="login-view" id="loginView">
+    <section class="login-view hidden" id="loginView">
       <div class="login-container">
         <h2>Welcome</h2>
-        <form>
-          <input class="username-input" id="usernameInput" type="text" placeholder="Username" required></input>
-          <input class="password-input" id="passwordInput" type="text" placeholder="Password" required></input>
+        <form class="login-form">
+          <input class="username-input" id="usernameInput" type="text" placeholder="Username" required>
+          <span class="error username-error" aria-live="polite"></span>
+          <input class="password-input" id="passwordInput" type="text" placeholder="Password" required>
+          <span class="error password-error" aria-live="polite"></span>
+          <button class="login-button" id="loginButton" type="submit">Login</button>
         </form>
-        <button class="login-button" id="loginButton" type="submit">Login</button>
       </div>
     </section>
     <section class="my-bookings-view hidden" id="myBookingsView">
       <section class="my-bookings-container" id="myBookingsContainer">
         <h2 id="myBookingsHeading">Jasmyn's Bookings</h2>
         <section class="my-bookings-wrapper" id=myBookingsWrapper>
-          <!-- <section class="individaul-booking"
-              <img src="https://www.mountainliving.com/content/uploads/data-import/9882388e/YC---River-Runs-Through-It---High-Resolution---Image-9.jpg" alt="luxry-cabin-room">
-            <div class="room-details">
-              <p>Date</p>
-              <p>Room Type</p>
-              <p>Bed Size</p>
-              <p>Number of Beds</p>
-            </div>
-            <p class="cost">Cost</p>
-          </section> -->
-
           </section>
           <h3 class="totalCost" id="totalCost">Total cost</h3>
         </section>
-
       </section>
     </section>
-    <section class=find-a-room-view>
-      <section class="date-picker-view hidden">
+    <section class="book-a-room-view hidden" id="bookARoomView">
+      <section class="book-a-room-container">
+        <form class="filter-form">
+          <div>
+            <h2>Select A Date</h2>
+            <input type="date" id="date" required>
+          </div>
+          <div class="room-type-section">
+            <h2>Select Room Type</h2>
+            <div>
+              <input type="radio" id="residentialSuite" name="roomType" value="residential suite">
+              <label>Residential Suite</label>
+            </div>
+            <div>
+              <input type="radio" id="suite" name="roomType" value="suite">
+              <label>Suite</label>
+            </div>
+            <div>
+              <input type="radio" id="juniorSuite" name="roomType" value="junior suite">
+              <label>Junior Suite</label>
+            </div>
+            <div>
+              <input type="radio" id="singleRoom" name="roomType" value="single room">
+              <label>Single Room</label>
+            </div>
+          </div>
+          <button type="submit" class="view-filtered-rooms-button" id="viewFilteredRoomsButton">View Rooms</button>
+        </form>
       </section>
-      <section class= "room-filter-view hidden">
+      <section class="filtered-rooms-container invisible" id='filteredRoomsContainer'>
       </section>
-      <section class>
+    </section>
+    <section class="booking-success-view" id="bookingSuccessView">
+      <section class="booking-success-container" id="bookingSuccessContainer">
+        <section class="success-message-wrapper" id="successMessageWrapper">
+          <h2>You're Going on Vacation!</h2>
+          <section class="booked-room">
+              <img src="https://www.mountainliving.com/content/uploads/data-import/9882388e/YC---River-Runs-Through-It---High-Resolution---Image-9.jpg" alt="luxry-cabin-room">
+            <div class="filtered-room-details">
+              <p>Room Type: ${room.roomType}</p>
+              <p>Bed Type: ${room.bedSize}</p>
+              <p>Number of Beds: ${room.numBeds}</p>
+            </div>
+            <p class="filtered-cost">$${room.costPerNight}</p>
+          </section>
+        </section>
+        <h3>This room has been added to your bookings</h3>
+        <div>
+        </div>
+      </section>
+    </section>
+    <section class="booking-fail-view hidden">
+      <section class="booking-fail-container">
+        <h2>Looks like something went wrong. Please try again.</h2>
+        <h3>Thank you for your patience</h3>
       </section>
     </section>
 
