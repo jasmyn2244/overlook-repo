@@ -31,6 +31,10 @@ const myBookingsButton = document.querySelector('#myBookingsButton');
 const filteredRoomsWrapper = document.querySelector('#filteredRoomsWrapper');
 const bookingSuccessView = document.querySelector('#bookingSuccessView');
 const successMessageWrapper = document.querySelector('#successMessageWrapper');
+const makeAnotherBookingButton = document.querySelector('#makeAnotherBookingButton');
+const viewMyBookingsButton = document.querySelector('#viewMyBookingsButton');
+const roomTypeSection = document.querySelector('#roomTypeSection');
+const bookingErrorView = document.querySelector("#bookingErrorView");
 
 
 let bookings;
@@ -46,8 +50,12 @@ export const fetchData = () => {
     .then(data => {
       bookings = data[0].bookings;
       rooms = data[1].rooms;
+      if(customer) {
+        customer.bookingsData = bookings
+      }
     })
-    .catch(err => console.log(err))
+
+    .catch(error => showErrorMessage())
 }
 
 // const customerPromise = new Promise(() => {
@@ -69,7 +77,7 @@ const authenticateCustomer = (event) => {
   }
 
 const displayMyBookings = () => {
-  domUpdates.hide([loginView, bookARoomView]);
+  domUpdates.hide([loginView, bookARoomView, bookingSuccessView]);
   domUpdates.show([myBookingsView, navButtonContainer]);
   customer.getBookings();
   customer.getTotalCostOfBookings();
@@ -82,7 +90,7 @@ const displayMyBookings = () => {
   }
 
 const displayBookARoom = () => {
-  domUpdates.hide([myBookingsView]);
+  domUpdates.hide([bookingSuccessView, myBookingsView]);
   domUpdates.show([bookARoomView])
   filteredRoomsContainer.classList.add('invisible');
 
@@ -90,11 +98,23 @@ const displayBookARoom = () => {
 
 const displayFilteredRooms = (event) => {
   event.preventDefault();
-  filteredRoomsContainer.classList.remove('invisible')
   inputDate = date.value.replace(/-/g, '/');
-  let inputType = document.querySelector('input[name="roomType"]:checked').value;
-  customer.filterRoomsByDate("inputDate");
-  customer.filterAvailibleRoomsByType(inputType);
+  if(!inputDate) {
+    domUpdates.showRequiredFieldMessage(date);
+    return;
+  } else {
+    domUpdates.hideRequiredFieldMessage(date)
+  }
+  let inputType = document.querySelector('input[name="roomType"]:checked');
+  if(!inputType) {
+    domUpdates.showRequiredFieldMessage(roomTypeSection);
+    return
+  } else {
+    domUpdates.hideRequiredFieldMessage(roomTypeSection)
+  }
+  filteredRoomsContainer.classList.remove('invisible')
+  customer.filterRoomsByDate(inputDate);
+  customer.filterAvailibleRoomsByType(inputType.value);
   domUpdates.showAvailibleRooms(customer);
 }
 
@@ -102,12 +122,20 @@ const displayFilteredRooms = (event) => {
 const makeNewBooking = (event) => {
   console.log(event)
   if(event.target.classList.contains('book-this-room-button')) {
-  roomToBook = customer.roomsByType.find(room => {
+    roomToBook = customer.roomsByType.find(room => {
       if(room.number === parseInt(event.target.id)) {
         return room
       }
-  })
-  postBooking(roomToBook, customer, inputDate)
+    })
+    postBooking(roomToBook, customer, inputDate)
+    //   .then(response => {
+    //     if(response.ok) {
+    //       showSuccessMessage()
+    //       fetchData()
+    //     } else if (!response.ok) {
+    //       showErrorMessage()
+    //     }
+    // })
   }
 }
 
@@ -118,6 +146,8 @@ export const showSuccessMessage = () => {
 }
 
 export const showErrorMessage = () => {
+  domUpdates.hide([bookARoomView])
+  domUpdates.show([bookingErrorView])
   console.log('error message placeholder')
 }
 
@@ -130,6 +160,10 @@ newBookingButton.addEventListener('click', displayBookARoom);
 viewFilteredRoomsButton.addEventListener('click', displayFilteredRooms);
 
 filteredRoomsContainer.addEventListener('click', makeNewBooking);
-// myBookingsButton.addEventListener('click', displayMyBookings);
+
+viewMyBookingsButton.addEventListener('click', displayMyBookings);
+
+makeAnotherBookingButton.addEventListener('click', displayBookARoom)
+myBookingsButton.addEventListener('click', displayMyBookings);
 
 export { customer };

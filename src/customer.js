@@ -46,6 +46,7 @@ class Customer {
         }
       })
     })
+    console.log('unavailable rooms array', unavailableRooms);
     this.rooms.forEach(room => {
       if(!unavailableRooms.includes(room))  {
         this.roomsByDate.push(room);

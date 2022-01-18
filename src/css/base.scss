@@ -192,6 +192,7 @@ h1 {
  @include container();
  width: 60%;
  overflow-y: auto;
+ color: $light-blue;
 }
 
 .individual-room {
@@ -203,6 +204,7 @@ h1 {
   margin: 2%;
   border-radius: 3px;
   font-size: 85%;
+  color: black;
 
   img {
     height: 100%;
@@ -233,13 +235,11 @@ h1 {
 
 .booking-success-view {
   @include mainView;
-  border: 2px solid red;
 }
 
 .booking-success-container {
   @include container;
   justify-content: space-around;
-  border: 2px solid yellow;
 
   h2,
   h3 {
@@ -248,29 +248,61 @@ h1 {
 }
 
 .success-message-wrapper {
-  border: 2px solid blue;
   @include flexbox(center, center);
   flex-direction: column;
   width: 95%;
-  height: 30%;
-  border: 2px dashed yellow;
+  height: 50%;
 }
 
 .booked-room {
   @include flexbox(center, center);
   justify-content: space-between;
-  width: 80%;
-  height: 60%;
+  width: 50%;
+  height: 40%;
   background-color: $light-blue;
   margin: 2%;
   border-radius: 3px;
   font-size: 85%;
-  border: 2px solid green;
 
   img {
     height: 100%;
   }
+}
 
+.success-buttons-container {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 10%;
+  width: 50%;
+  height: 10%;
+
+  button {
+    height: 100%;
+    width: 40%;
+    background: $light-blue;
+    border-radius: 5px;
+  }
+
+  .cost {
+    border-right: 20%;
+  }
+}
+
+.error-border {
+  border: 2px solid red;
+  border-radius: 5px;
+}
+
+.booking-error-view {
+  @include mainView;
+}
+
+.booking-fail-container {
+  @include container;
+  height: 40%;
+  width: 40%;
+  color: $light-blue;
+  justify-content: space-around;
 }
 
 
